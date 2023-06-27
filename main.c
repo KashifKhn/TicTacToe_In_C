@@ -35,7 +35,6 @@ void exitGame();
 void welcomeScreen()
 {
     clearScreen();
-    printf("\n\n\n");
     printf("\t\t###################################################\n");
     printf("\t\t#                                                 #\n");
     printf("\t\t#               -----------------------           #\n");
@@ -74,7 +73,6 @@ void welcomeScreen()
 void mainMenu()
 {
     clearScreen();
-    printf("\n\n\n");
     printf("\t\t###################################################\n");
     printf("\t\t#                                                 #\n");
     printf("\t\t#               -----------------------           #\n");
@@ -314,20 +312,24 @@ void SinglePlayerTurn(char sign)
 {
     while (true)
     {
-        int position;
+        char position;
         printf("Player %c Turn: \n", sign);
         printf("Choose The Position between 1 to 9: \n");
         printf("Enter Position: ");
-        scanf("%d", &position);
-        if (isFreeSpaceAvailable(gameBoard, position))
+        position = getch();
+        if (position >= '0' && position <= '9')
         {
-            placeMove(gameBoard, position, sign);
-            break;
+            position -= 48;
+            if (isFreeSpaceAvailable(gameBoard, position))
+            {
+                placeMove(gameBoard, position, sign);
+                break;
+            }
+            else
+                printf("Invalid Position\n");
         }
         else
-        {
-            printf("Invalid Position\n");
-        }
+                printf("Invalid Position\n");
     }
 }
 
@@ -339,11 +341,17 @@ void playerOneTurn(char sign)
         printf("Player 1 %c Turn: \n", sign);
         printf("Choose The Position between 1 to 9: \n");
         printf("Enter Position: ");
-        scanf("%d", &position);
-        if (isFreeSpaceAvailable(gameBoard, position))
+        position = getch();
+        if (position >= '0' && position <= '9')
         {
-            placeMove(gameBoard, position, sign);
-            break;
+            position -= 48;
+            if (isFreeSpaceAvailable(gameBoard, position))
+            {
+                placeMove(gameBoard, position, sign);
+                break;
+            }
+            else
+                printf("Invalid Position\n");
         }
         else
             printf("Invalid Position\n");
@@ -358,11 +366,17 @@ void playerTwoTurn(char sign)
         printf("Player 2 %c Turn: \n", sign);
         printf("Choose The Position between 1 to 9: \n");
         printf("Enter Position: ");
-        scanf("%d", &position);
-        if (isFreeSpaceAvailable(gameBoard, position))
+        position = getch();
+        if (position >= '0' && position <= '9')
         {
-            placeMove(gameBoard, position, sign);
-            break;
+            position -= 48;
+            if (isFreeSpaceAvailable(gameBoard, position))
+            {
+                placeMove(gameBoard, position, sign);
+                break;
+            }
+            else
+                printf("Invalid Position\n");
         }
         else
             printf("Invalid Position\n");
@@ -372,7 +386,6 @@ void playerTwoTurn(char sign)
 void choosePlayerSign(char *signOne, char *signTwo)
 {
     clearScreen();
-    printf("\n\n\n");
     printf("\t\t###################################################\n");
     printf("\t\t#                 Choose Symbole                  #\n");
     printf("\t\t#                                                 #\n");
@@ -393,7 +406,7 @@ void choosePlayerSign(char *signOne, char *signTwo)
     char option;
     printf("\t\t\t\t--->: ");
     option = getch();
-    if(option>= '0' && option <= '9')
+    if (option >= '0' && option <= '9')
         option -= 48;
     printf("\n\n\n");
     if (option == 1 || option == 'x' || option == 'X')
@@ -483,50 +496,23 @@ bool isFreeSpaceAvailable(char gameBoard[5][5], int position)
     switch (position)
     {
     case 1:
-        if (gameBoard[0][0] == ' ')
-            return true;
-        else
-            return false;
+        return gameBoard[0][0] == ' ';
     case 2:
-        if (gameBoard[0][2] == ' ')
-            return true;
-        else
-            return false;
+        return gameBoard[0][2] == ' ';
     case 3:
-        if (gameBoard[0][4] == ' ')
-            return true;
-        else
-            return false;
+        return gameBoard[0][4] == ' ';
     case 4:
-        if (gameBoard[2][0] == ' ')
-            return true;
-        else
-            return false;
+        return gameBoard[2][0] == ' ';
     case 5:
-        if (gameBoard[2][2] == ' ')
-            return true;
-        else
-            return false;
+        return gameBoard[2][2] == ' ';
     case 6:
-        if (gameBoard[2][4] == ' ')
-            return true;
-        else
-            return false;
+        return gameBoard[2][4] == ' ';
     case 7:
-        if (gameBoard[4][0] == ' ')
-            return true;
-        else
-            return false;
+        return gameBoard[4][0] == ' ';
     case 8:
-        if (gameBoard[4][2] == ' ')
-            return true;
-        else
-            return false;
+        return gameBoard[4][2] == ' ';
     case 9:
-        if (gameBoard[4][4] == ' ')
-            return true;
-        else
-            return false;
+        return gameBoard[4][4] == ' ';
     default:
         false;
     }
@@ -566,7 +552,6 @@ bool isGameOver(char gameBoard[5][5], char sign1, char sign2)
 void winingMessage(char sign)
 {
     clearScreen();
-    printf("\n");
     printf("\t\t*#*********************************************************#*\n");
     printf("\t\t*#*********************************************************#*\n");
     printf("\t\t*#*                                                       *#*\n");
@@ -589,7 +574,6 @@ void winingMessage(char sign)
 void drawMessage()
 {
     clearScreen();
-    printf("\n");
     printf("\t\t*#*********************************************************#*\n");
     printf("\t\t*#*********************************************************#*\n");
     printf("\t\t*#*                                                       *#*\n");
@@ -607,7 +591,6 @@ void playAgain()
 {
     restBoard(gameBoard);
     clearScreen();
-    printf("\n");
     printf("\t\t*#*********************************************************#*\n");
     printf("\t\t*#*********************************************************#*\n");
     printf("\t\t*#*                                                       *#*\n");
