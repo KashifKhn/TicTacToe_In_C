@@ -8,44 +8,44 @@ C compiler
 ## Code Overview
 The main functionality of the game is implemented in the following functions:
 
-#### welcomeScreen():
+### welcomeScreen():
 Displays the welcome screen.
-#### mainMenu(): 
+### mainMenu(): 
 Displays the main menu options and handles user input.
-#### singlePlayerMode(): 
+### singlePlayerMode(): 
 Starts the single-player mode of the game.
-#### SinglePlayerTurn(char sign): 
+### SinglePlayerTurn(char sign): 
 Handles the player's turn in the single-player mode.
-#### computerTurn(char sign): 
+### computerTurn(char sign): 
 Handles the computer's turn in the single-player mode.
-#### multiPlayerMode(): 
+### multiPlayerMode(): 
 Starts the multiplayer mode of the game.
-#### playerOneTurn(char sign): 
+### playerOneTurn(char sign): 
 Handles the first player's turn in the multiplayer mode.
-#### playerTwoTurn(char sign): 
+### playerTwoTurn(char sign): 
 Handles the second player's turn in the multiplayer mode.
-#### choosePlayerSign(char *playerSign, char *ComputerSign): 
+### choosePlayerSign(char *playerSign, char *ComputerSign): 
 Prompts the player to choose their sign.
-#### printBoard(char gameBoard[5][5]): 
+### printBoard(char gameBoard[5][5]): 
 Prints the current state of the game board.
-#### resetBoard(char gameBoard[5][5]): 
+### resetBoard(char gameBoard[5][5]): 
 Resets the game board to its initial state.
-#### placeMove(char gameBoard[5][5], int position, char sign): 
+### placeMove(char gameBoard[5][5], int position, char sign): 
 Places the player's move on the game board.
-#### isFreeSpaceAvailable(char gameBoard[5][5], int position): 
+### isFreeSpaceAvailable(char gameBoard[5][5], int position): 
 Checks if a space on the game board is available.
 checkWin(char gameBoard[5][5], char sign): Checks if a player has won the game.
-#### isGameOver(char gameBoard[5][5], char sign1, char sign2): 
+### isGameOver(char gameBoard[5][5], char sign1, char sign2): 
 Checks if the game is over.
-#### winingMessage(char sign): 
+### winingMessage(char sign): 
 Displays the winning message for the player with the specified sign.
-#### drawMessage(): 
+### drawMessage(): 
 Displays the draw message when the game ends in a draw.
-#### playAgain(): 
+### playAgain(): 
 Prompts the player to play again.
-#### clearScreen(): 
+### clearScreen(): 
 Clears the screen.
-#### exitGame(): 
+### exitGame(): 
 Exits the game.
 
 ## How to Run
