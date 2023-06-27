@@ -3,6 +3,7 @@
 #include <conio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 
 char gameBoard[5][5] = {
     {' ', '|', ' ', '|', ' '},
@@ -21,7 +22,7 @@ void playerOneTurn(char sign);
 void playerTwoTurn(char sign);
 void choosePlayerSign(char *playerSign, char *ComputerSign);
 void printBoard(char gameBoard[5][5]);
-void restBoard(char gameBoard[5][5]);
+void resetBoard(char gameBoard[5][5]);
 void placeMove(char gameBoard[5][5], int position, char sign);
 bool isFreeSpaceAvailable(char gameBoard[5][5], int position);
 bool checkWin(char gameBoard[5][5], char sign);
@@ -103,10 +104,7 @@ void mainMenu()
     else if (option == 0)
         exitGame();
     else
-    {
         printf("Invalid Option");
-        main();
-    }
 }
 
 void singlePlayerMode()
@@ -326,10 +324,10 @@ void SinglePlayerTurn(char sign)
                 break;
             }
             else
-                printf("Invalid Position\n");
+                printf("Invalid Position: Space already occupied.\n");
         }
         else
-                printf("Invalid Position\n");
+            printf("Invalid Position: Enter a number between 1 and 9.\n");
     }
 }
 
@@ -351,10 +349,10 @@ void playerOneTurn(char sign)
                 break;
             }
             else
-                printf("Invalid Position\n");
+                printf("Invalid Position: Space already occupied.\n");
         }
         else
-            printf("Invalid Position\n");
+            printf("Invalid Position: Enter a number between 1 and 9.\n");
     }
 }
 
@@ -376,10 +374,10 @@ void playerTwoTurn(char sign)
                 break;
             }
             else
-                printf("Invalid Position\n");
+                printf("Invalid Position: Space already occupied.\n");
         }
         else
-            printf("Invalid Position\n");
+            printf("Invalid Position: Enter a number between 1 and 9.\n");
     }
 }
 
@@ -441,7 +439,7 @@ void printBoard(char gameBoard[5][5])
     }
 }
 
-void restBoard(char gameBoard[5][5])
+void resetBoard(char gameBoard[5][5])
 {
     // clearScreen();
     for (int i = 0; i < 5; i++)
@@ -589,7 +587,7 @@ void drawMessage()
 
 void playAgain()
 {
-    restBoard(gameBoard);
+    resetBoard(gameBoard);
     clearScreen();
     printf("\t\t*#*********************************************************#*\n");
     printf("\t\t*#*********************************************************#*\n");
@@ -609,10 +607,12 @@ void playAgain()
 void clearScreen()
 {
     system("cls");
+    // system("clear");
 }
 
 void exitGame()
 {
+    printf("Thank you for playing Tic Tac Toe! Goodbye.\n");
     exit(0);
 }
 
